@@ -85,6 +85,8 @@ nav{
 .nav-logo{
     position : relative;
 }
+a{
+    color : var( --text-color-second);
 
 .nav-name{
     font-size: 30px;
