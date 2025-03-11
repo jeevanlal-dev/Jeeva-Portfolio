@@ -62,6 +62,7 @@ i{
 
 /* base code */
 body{
+    overflow-x: hidden;
     background-color: var(--body-color);
 }
 .container
@@ -182,8 +183,8 @@ nav{
 .featured-text-btn>.blue-btn:hover{
     background: var(--first-color-hover);
 }
-.social-icons a:hover{
-    background-color: var(--first-color-hover);
+.social-icons a:hover,.footer-social-icons a:hover{
+    color: var(--first-color-hover);
 }
 .social-icons{
     display: flex;
@@ -204,7 +205,7 @@ nav{
 .featured-image{
     display: flex;
     justify-content: right;
-    align-items: center;
+    align-content: center;
     min-height: 80vh;
     width: 50%;
 }
@@ -485,7 +486,7 @@ a{
 @media only screen and(max-width : 1024px)
 {
     body{
-       overflow-x: hidden;
+        overflow-x: hidden;
     }
     .featured-text{
         padding : 0;
@@ -498,9 +499,7 @@ a{
 }
 /* Mediaquery for 900px */
 @media only screen and (max-width : 900px){
-    body{
-        overflow-x: hidden;
-    }
+   
     .nav-btn{
         display: none;
     }
@@ -515,7 +514,7 @@ a{
         backdrop-filter: blur(20px);
         width: 100%;
         min-height: 450px;
-        height: 90vh;
+        height: 100vh;
         transition: .3s;
     }
 
@@ -550,9 +549,10 @@ a{
     }
     .featured-box{
         flex-direction: column;
+        align-items: center;
         justify-content: center;
-        align-items : center;
-        height: 140vh;
+        text-align: justify;
+        height: 100vh;
     }
     .featured-text{
         width: auto;
@@ -594,9 +594,11 @@ a{
         width: 100%;
     }
     .contact-info{
-        font-size: 12px;
+        font-size: 13px;
     }
     .about-info,.contact-info{
+        display: flex;
+        justify-content: center;
         width: 100%;
     }
     .project-container{
@@ -607,12 +609,18 @@ a{
         width: 80%;
         
     }
+    .bottom-footer p{
+        font-size: 14px;
+    }
     /* ✅ Fixes alignment issue when animations run */
 
 }
+
+
 @media only screen and (max-width: 540px) {
-    body{
-       overflow-x: hidden;
+    body {
+        overflow-x: hidden;
+        width: 100vw;
     }
     .featured-name {
         font-size: 35px;
@@ -630,10 +638,32 @@ a{
     .project-box{
         width: 100%;
     }
-    .bottom-footer p{
-        font-size : auto;
-    }
     .contact-info{
-        font-size: 12px;
+        font-size: 11px;
     }
+    
+}
+@media only screen and (min-width: 1024px) and (max-width: 1366px) {
+    body{
+        height: 100%;
+    }
+    .featured-box{
+        height: 70vh;
+        position: relative;
+        top : -100px;
+    }
+    
+    
+}
+@media only screen and (min-width: 912px) and (max-width: 1368px){
+    body{
+        height: 100%;
+    }
+    .featured-box{
+        height: 70vh;
+        position: relative;
+        top : -100px;
+        text-align: justify;
+    }
+    
 }
