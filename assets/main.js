@@ -1,99 +1,102 @@
-function myMenuFunction() {
-    var menuBtn = document.getElementById("myNavMenu"); // Fixed method name
+// ✅ Ensure the DOM is fully loaded before running scripts
+document.addEventListener("DOMContentLoaded", function () {
+    console.log("DOM fully loaded! Running scripts...");
 
-    if (menuBtn.className === "nav-menu") {
-        menuBtn.className += " responsive"; // Added space before "responsive"
-    } else {
-        menuBtn.className = "nav-menu";
-    }
-}
+    // ✅ Mobile Menu Toggle Function
+    function myMenuFunction() {
+        var menuBtn = document.getElementById("myNavMenu");
 
-window.onscroll = function() { headerShadow(); ScrollActive(); };
-
-function headerShadow() {
-    const navHeader = document.getElementById("header");
-    if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-        navHeader.style.boxShadow = "0 1px 6px rgba(0,0,0,0.1)";
-        navHeader.style.height = "70px";
-        navHeader.style.lineHeight = "70px";
-    } else {
-        navHeader.style.boxShadow = "none";
-        navHeader.style.height = "90px";
-        navHeader.style.lineHeight = "90px";
-    }
-}
-
-var typingEffect = new Typed(".typedtext", {
-    strings: ["Developer"],
-    loop: true,
-    typeSpeed: 100, // Corrected property name
-    backSpeed: 80,  // Corrected property name
-    backDelay: 2000
-});
-
-const sr = ScrollReveal({
-    origin: 'top',  // Fixed origin value (it should be in quotes)
-    distance: '80px',
-    duration: 2000,
-    reset: true
-});
-
-sr.reveal('.featured-text-card', {});
-sr.reveal('.featured-name', { delay: 100 });
-sr.reveal('.featured-text-info', { delay: 200 });
-sr.reveal('.featured-text-btn', { delay: 200 });
-sr.reveal('.social-icons', { delay: 200 });
-sr.reveal('.featured-image', { delay: 300 });
-
-// projectbox
-sr.reveal('.project-box', { interval: 200 });
-
-// heading
-sr.reveal('.top-header', {});
-
-// about info  
-const srLeft = ScrollReveal({
-    origin: 'left',
-    distance: '80px',
-    duration: 2000,
-    reset: true
-});
-
-srLeft.reveal('.about-info', { delay: 100 });
-srLeft.reveal('.contact-info', { delay: 100 });
-
-// About skills and form box 
-srLeft.reveal('.about-info', { delay: 100 });
-srLeft.reveal('.contact-info', { delay: 100 });
-
-// About skill 
-const srRight = ScrollReveal({
-    origin: 'right',
-    distance: '80px',
-    duration: 2000,
-    reset: true
-});
-srRight.reveal('.skill-box', { delay: 100 });
-srRight.reveal('.form-control', { delay: 100 });
-
-const sections = document.querySelectorAll('section[id]');
-
-// Corrected function syntax for ScrollActive function
-function ScrollActive() {
-    const scrollY = window.scrollY;
-    sections.forEach(current => {
-        const sectionHeight = current.offsetHeight,
-            sectionTop = current.offsetTop - 50,
-            sectionId = current.getAttribute('id');
-
-        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-            document.querySelector('.nav-menu a[href*=' + sectionId + ']').classList.add('active-link');
-
+        if (menuBtn.classList.contains("nav-menu")) {
+            menuBtn.classList.add("responsive");
         } else {
-            document.querySelector('.nav-menu a[href*=' + sectionId + ']').classList.remove('active-link');
+            menuBtn.classList.remove("responsive");
         }
-    })
-}
+    }
+    
+    // ✅ Attach menu function to menu button
+    document.querySelector(".nav-menu-btn i").addEventListener("click", myMenuFunction);
 
-// Fixed the event listener syntax: added quotes around 'scroll' event
-window.addEventListener('scroll', ScrollActive);
+    // ✅ Header Shadow on Scroll
+    function headerShadow() {
+        const navHeader = document.getElementById("header");
+        if (window.scrollY > 50) {
+            navHeader.style.boxShadow = "0 1px 6px rgba(0,0,0,0.1)";
+            navHeader.style.height = "70px";
+            navHeader.style.lineHeight = "70px";
+        } else {
+            navHeader.style.boxShadow = "none";
+            navHeader.style.height = "90px";
+            navHeader.style.lineHeight = "90px";
+        }
+    }
+
+    // ✅ Scroll Active Link Highlight
+    function ScrollActive() {
+        const scrollY = window.scrollY;
+        const sections = document.querySelectorAll('section[id]');
+
+        sections.forEach(section => {
+            const sectionHeight = section.offsetHeight;
+            const sectionTop = section.offsetTop - 50;
+            const sectionId = section.getAttribute('id');
+            const navLink = document.querySelector(`.nav-menu a[href*="${sectionId}"]`);
+
+            if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                navLink?.classList.add('active-link');
+            } else {
+                navLink?.classList.remove('active-link');
+            }
+        });
+    }
+
+    // ✅ Scroll Event Listeners
+    window.addEventListener("scroll", () => {
+        headerShadow();
+        ScrollActive();
+    });
+
+    // ✅ Typed.js Effect
+    if (typeof Typed !== "undefined") {
+        var typingEffect = new Typed(".typedtext", {
+            strings: ["Developer"],
+            loop: true,
+            typeSpeed: 100,
+            backSpeed: 80,
+            backDelay: 2000
+        });
+        console.log("Typed.js initialized!");
+    } else {
+        console.warn("Typed.js not found!");
+    }
+
+    // ✅ ScrollReveal Animations
+    if (typeof ScrollReveal !== "undefined") {
+        console.log("ScrollReveal initialized!");
+
+        const sr = ScrollReveal({
+            origin: "top",
+            distance: "80px",
+            duration: 2000
+        });
+
+        sr.reveal(".featured-text-card", {});
+        sr.reveal(".featured-name", { delay: 100 });
+        sr.reveal(".featured-text-info", { delay: 200 });
+        sr.reveal(".featured-text-btn", { delay: 200 });
+        sr.reveal(".social-icons", { delay: 200 });
+        sr.reveal(".featured-image", { delay: 300 });
+
+        sr.reveal(".project-box", { interval: 200 });
+        sr.reveal(".top-header", {});
+
+        // About Section Animations
+        sr.reveal(".about-info", { origin: "left", delay: 100 });
+        sr.reveal(".contact-info", { origin: "left", delay: 100 });
+        sr.reveal(".skill-box", { origin: "right", delay: 100 });
+        sr.reveal(".form-control", { origin: "right", delay: 100 });
+
+        console.log("ScrollReveal animations added!");
+    } else {
+        console.warn("ScrollReveal.js not found!");
+    }
+});
