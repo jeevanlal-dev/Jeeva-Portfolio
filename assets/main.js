@@ -1,4 +1,3 @@
-// ✅ Ensure the DOM is fully loaded before running scripts
 document.addEventListener("DOMContentLoaded", function () {
     console.log("DOM fully loaded! Running scripts...");
 
@@ -6,14 +5,13 @@ document.addEventListener("DOMContentLoaded", function () {
     function myMenuFunction() {
         var menuBtn = document.getElementById("myNavMenu");
 
-        if (menuBtn.classList.contains("nav-menu")) {
-            menuBtn.classList.add("responsive");
-        } else {
+        if (menuBtn.classList.contains("responsive")) {
             menuBtn.classList.remove("responsive");
+        } else {
+            menuBtn.classList.add("responsive");
         }
     }
-    
-    // ✅ Attach menu function to menu button
+
     document.querySelector(".nav-menu-btn i").addEventListener("click", myMenuFunction);
 
     // ✅ Header Shadow on Scroll
@@ -69,34 +67,46 @@ document.addEventListener("DOMContentLoaded", function () {
         console.warn("Typed.js not found!");
     }
 
-    // ✅ ScrollReveal Animations
+    // ✅ ScrollReveal Animations (Fixed with proper alignment)
     if (typeof ScrollReveal !== "undefined") {
         console.log("ScrollReveal initialized!");
 
         const sr = ScrollReveal({
             origin: "top",
-            distance: "80px",
-            duration: 2000
+            distance: "50px", // Reduced distance to prevent big shifts
+            duration: 1500,
+            opacity: 0, // Ensures a smooth appearance
+            reset: true // ✅ FIXED: Animations will NOT repeat on scroll
         });
+        sr.reveal(".featured-text",{beforeReveal : fixAlignment})
+        sr.reveal("#about",{beforeReveal : fixAlignment})
+        sr.reveal(".featured-text-card", { });
+        sr.reveal(".featured-name", { delay: 100, });
+        sr.reveal(".featured-text-info", { delay: 200, beforeReveal: fixAlignment });
+        sr.reveal(".featured-text-btn", { delay: 200,  });
+        sr.reveal(".social-icons", { delay: 200,  });
+        sr.reveal(".featured-image", { delay: 300, beforeReveal: fixAlignment });
 
-        sr.reveal(".featured-text-card", {});
-        sr.reveal(".featured-name", { delay: 100 });
-        sr.reveal(".featured-text-info", { delay: 200 });
-        sr.reveal(".featured-text-btn", { delay: 200 });
-        sr.reveal(".social-icons", { delay: 200 });
-        sr.reveal(".featured-image", { delay: 300 });
+        sr.reveal(".project-box", { interval: 200, beforeReveal: fixAlignment });
+        sr.reveal(".top-header", { beforeReveal: fixAlignment });
 
-        sr.reveal(".project-box", { interval: 200 });
-        sr.reveal(".top-header", {});
+        sr.reveal(".about-info", { origin: "left", delay: 100, beforeReveal: fixAlignment });
+        sr.reveal(".contact-info", { origin: "left", delay: 100, beforeReveal: fixAlignment });
 
-        // About Section Animations
-        sr.reveal(".about-info", { origin: "left", delay: 100 });
-        sr.reveal(".contact-info", { origin: "left", delay: 100 });
-        sr.reveal(".skill-box", { origin: "right", delay: 100 });
-        sr.reveal(".form-control", { origin: "right", delay: 100 });
+        sr.reveal(".skill-box", { origin: "right", delay: 100, });
+        sr.reveal(".form-control", { origin: "right", delay: 100, });
 
         console.log("ScrollReveal animations added!");
     } else {
         console.warn("ScrollReveal.js not found!");
+    }
+
+    // ✅ Fix Alignment After Animation
+    function fixAlignment(el) {
+        el.style.display = "flex";
+        el.style.alignItems = "center";
+        el.style.justifyContent = "center";
+        el.style.flexDirection = "column";
+        el.style.opacity = "1";
     }
 });
