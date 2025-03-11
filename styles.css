@@ -484,6 +484,9 @@ a{
 /* Mediascreen for 1024px */
 @media only screen and(max-width : 1024px)
 {
+    body{
+        overflow-x:hidden;
+    }
     .featured-text{
         padding : 0;
 
@@ -495,6 +498,9 @@ a{
 }
 /* Mediaquery for 900px */
 @media only screen and (max-width : 900px){
+    body{
+        overflow-x:hidden;
+    }
     .nav-btn{
         display: none;
     }
@@ -605,6 +611,9 @@ a{
 
 }
 @media only screen and (max-width: 540px) {
+    body{
+        overflow-x:hidden;
+    }
     .featured-name {
         font-size: 35px;
     }
