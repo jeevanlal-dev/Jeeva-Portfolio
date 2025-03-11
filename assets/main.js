@@ -63,8 +63,13 @@ srLeft.reveal('.about-info', { delay: 100 });
 srLeft.reveal('.contact-info', { delay: 100 });
 
 // About skills and form box 
-srLeft.reveal('.about-info', { delay: 100 });
-srLeft.reveal('.contact-info', { delay: 100 });
+srLeft.reveal('.top-footer', { delay: 100 });
+srLeft.reveal('.middle-footer', { delay: 100 });
+srLeft.reveal('.footer-social-icons', { delay: 100 });
+
+
+
+
 
 // About skill 
 const srRight = ScrollReveal({
@@ -75,6 +80,8 @@ const srRight = ScrollReveal({
 });
 srRight.reveal('.skill-box', { delay: 100 });
 srRight.reveal('.form-control', { delay: 100 });
+
+
 
 const sections = document.querySelectorAll('section[id]');
 
