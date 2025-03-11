@@ -633,4 +633,7 @@ a{
     .bottom-footer p{
         font-size : auto;
     }
+    .contact-info{
+        font-size: 12px;
+    }
 }
