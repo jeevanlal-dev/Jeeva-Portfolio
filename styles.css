@@ -284,7 +284,7 @@ h3{
 .about-info{
     position : relative;
     display : flex;
-    text-align : justify;
+    text-align: justify;
     align-items: center;
     flex-direction: column;
     padding-block: 30px 70px;
