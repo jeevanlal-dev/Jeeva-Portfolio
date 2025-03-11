@@ -33,7 +33,7 @@ var typingEffect = new Typed(".typedtext", {
 
 const sr = ScrollReveal({
     origin: 'top',  // Fixed origin value (it should be in quotes)
-    distance: '80px',
+    distance: '50px',
     duration: 2000,
     reset: true
 });
@@ -54,7 +54,7 @@ sr.reveal('.top-header', {});
 // about info  
 const srLeft = ScrollReveal({
     origin: 'left',
-    distance: '80px',
+    distance: '50px',
     duration: 2000,
     reset: true
 });
@@ -74,7 +74,7 @@ srLeft.reveal('.footer-social-icons', { delay: 100 });
 // About skill 
 const srRight = ScrollReveal({
     origin: 'right',
-    distance: '80px',
+    distance: '50px',
     duration: 2000,
     reset: true
 });
