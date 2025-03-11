@@ -546,7 +546,7 @@ a{
         flex-direction: column;
         justify-content: center;
         align-items : center;
-        height: 100vh;
+        height: 140vh;
     }
     .featured-text{
         width: auto;
