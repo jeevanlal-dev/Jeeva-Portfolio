@@ -569,9 +569,7 @@ footer{
 
     }
     .scroll-btn{
-        position: absolute;
-        top: 900px;
-        z-index: -1;
+         display : none;
     }
     .image,.image img{
         width: 150px;
