@@ -485,7 +485,7 @@ a{
 @media only screen and(max-width : 1024px)
 {
     body{
-        overflow-x:hidden;
+       overflow-x: hidden;
     }
     .featured-text{
         padding : 0;
@@ -612,7 +612,7 @@ a{
 }
 @media only screen and (max-width: 540px) {
     body{
-        overflow-x:hidden;
+       overflow-x: hidden;
     }
     .featured-name {
         font-size: 35px;
