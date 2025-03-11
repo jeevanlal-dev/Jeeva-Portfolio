@@ -1,3 +1,11 @@
+var scrollEventHandler = function()
+{
+  window.scroll(0, window.pageYOffset)
+}
+
+window.addEventListener("scroll", scrollEventHandler, false);
+
+
 function myMenuFunction() {
     var menuBtn = document.getElementById("myNavMenu"); // Fixed method name
 
@@ -64,8 +72,9 @@ srLeft.reveal('.contact-info', { delay: 100 });
 
 // About skills and form box 
 srLeft.reveal('.top-footer', { delay: 100 });
-srLeft.reveal('.middle-footer', { delay: 100 });
 srLeft.reveal('.footer-social-icons', { delay: 100 });
+
+
 
 
 
@@ -80,27 +89,24 @@ const srRight = ScrollReveal({
 });
 srRight.reveal('.skill-box', { delay: 100 });
 srRight.reveal('.form-control', { delay: 100 });
-
+srRight.reveal('.bottom-footer', { delay: 100 });
+srRight.reveal('.middle-footer', { delay: 100 });
 
 
 const sections = document.querySelectorAll('section[id]');
 
 // Corrected function syntax for ScrollActive function
-function ScrollActive() {
+function scrollActive() {
     const scrollY = window.scrollY;
-    sections.forEach(current => {
-        const sectionHeight = current.offsetHeight,
-            sectionTop = current.offsetTop - 50,
-            sectionId = current.getAttribute('id');
-
-        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-            document.querySelector('.nav-menu a[href*=' + sectionId + ']').classList.add('active-link');
-
-        } else {
-            document.querySelector('.nav-menu a[href*=' + sectionId + ']').classList.remove('active-link');
-        }
+    sections.forEach(current =>{
+      const sectionHeight = current.offsetHeight,
+          sectionTop = current.offsetTop - 50,
+        sectionId = current.getAttribute('id')
+      if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) { 
+          document.querySelector('.nav-menu a[href*=' + sectionId + ']').classList.add('active-link')
+      }  else {
+        document.querySelector('.nav-menu a[href*=' + sectionId + ']').classList.remove('active-link')
+      }
     })
-}
-
-// Fixed the event listener syntax: added quotes around 'scroll' event
-window.addEventListener('scroll', ScrollActive);
+  }
+  window.addEventListener('scroll', scrollActive)
