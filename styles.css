@@ -204,7 +204,7 @@ nav{
 .featured-image{
     display: flex;
     justify-content: right;
-    align-content: center;
+    align-items: center;
     min-height: 80vh;
     width: 50%;
 }
